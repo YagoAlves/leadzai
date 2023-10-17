@@ -61,8 +61,8 @@ class TestPagination(unittest.TestCase):
         result = generate_pagination(current_page, total_pages, boundaries, around)
         assert expected_result == result
 
-    def test_wrong_input(self):
-        """ test generate_pagination() with wrong inputs """
+    def test_integer_input(self):
+        """ test generate_pagination() with integer inputs """
 
         expected_result = "The values must be integer"
         current_page = "1"
@@ -73,8 +73,63 @@ class TestPagination(unittest.TestCase):
         result = generate_pagination(current_page, total_pages, boundaries, around)
         assert expected_result == result
 
+
+    def test_negative_input(self):
+        """ test generate_pagination() with negative inputs """
+
         expected_result = "The values must be positive"
         current_page = -1
+        total_pages = 1
+        boundaries = 1
+        around = 1
+
+        result = generate_pagination(current_page, total_pages, boundaries, around)
+        assert expected_result == result
+
+    def est_example_3(self):
+        """ test generate_pagination() after current page """
+
+        expected_result = "1 2 3 4 ... 7 8 9 10"
+        current_page = 9
+        total_pages = 10
+        boundaries = 4
+        around = 1
+
+        result = generate_pagination(current_page, total_pages, boundaries, around)
+        assert expected_result == result
+
+    def test_example_4(self):
+        """ test generate_pagination() after current page """
+
+        expected_result = "1 2 3 4 5 6 7 8 9 10"
+        current_page = 5
+        total_pages = 10
+        boundaries = 11
+        around = 1
+
+        result = generate_pagination(current_page, total_pages, boundaries, around)
+        assert expected_result == result
+
+    def test_example_5(self):
+        """ test generate_pagination() after current page """
+
+        expected_result = "1 2 3 4 5 6 7 8 9 10"
+        current_page = 1
+        total_pages = 10
+        boundaries = 6
+        around = 1
+
+        result = generate_pagination(current_page, total_pages, boundaries, around)
+        assert expected_result == result
+
+    def est_example_6(self):
+        """ test generate_pagination() after current page """
+
+        expected_result = "1 2 3 4 5 6 7 8 9 10"
+        current_page = 10
+        total_pages = 10
+        boundaries = 6
+        around = 1
 
         result = generate_pagination(current_page, total_pages, boundaries, around)
         assert expected_result == result
